@@ -11,6 +11,8 @@ utils_dir = os.path.join(proj_path, "src", "{{cookiecutter.package_name}}", "uti
 # Remove unnecessary app templates
 if include_streamlit_app.lower() not in ['yes', 'y']:
     shutil.rmtree(os.path.join(proj_path, 'app_streamlit'))
+    shutil.rmtree(os.path.join(proj_path, 'assets'))
+    shutil.rmtree(os.path.join(proj_path, '.streamlit'))
 
 if include_fastapi_app.lower() not in ['yes', 'y']:
     shutil.rmtree(os.path.join(proj_path, 'app_fastapi'))

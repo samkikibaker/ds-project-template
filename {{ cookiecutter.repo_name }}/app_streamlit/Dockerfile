@@ -5,12 +5,14 @@ WORKDIR /app
 RUN pip install -U pip setuptools wheel
 
 COPY src src
+COPY assets assets
 COPY pyproject.toml pyproject.toml
 RUN pip install .
 
 COPY app_streamlit/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
+COPY .streamlit .streamlit
 COPY app_streamlit/app.py app.py
 
 EXPOSE 8501

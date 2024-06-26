@@ -1,7 +1,10 @@
-# Data Science Boilerplate
-A standardised project structure for doing and sharing data science work that enforces best practices.
+# Hoare Lea Data Science Project Template
+A standardised project structure for doing and sharing data science work that enforces best practices. This template includes useful boilerplate code for Hoare Lea projects including:
+* Hoare Lea fonts, colors, logos and css styles added to streamlit apps by default
+* Utility functions for generating plotly data visualisations in the Hoare Lea style
+* Utility functions for connecting to company data sources (FUTURE)
 
-This template has been influenced by [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/), [Kedro](https://kedro.org/) and [govcookiecutter](https://best-practice-and-impact.github.io/govcookiecutter/#govcookiecutter). The goal is to maintain modularity and separation of concerns:
+The goal of this template is to maintain modularity and separation of concerns:
 - **Shared Code**: All reusable code should reside in the `src` directory.
 - **Apps, Pipelines, and Notebooks**: Use the shared code in apps, pipelines, and notebooks, ensuring that your project remains clean and maintainable.
 
@@ -12,7 +15,7 @@ This template has been influenced by [Cookiecutter Data Science](https://drivend
    ```
 2. Start a new project. You will be prompted to enter some configuration values.
    ```bash
-   cookiecutter gh:andrewjkuo/ds-boilerplate
+   cookiecutter gh:HoareLea/ds-project-template
    ```
 
 ## Project Structure
@@ -43,7 +46,3 @@ The directory structure of your new project looks like this:
 │       └── visualization  <- Scripts to create exploratory and results-oriented visualizations.
 └── tests                  <- Tests for functions in src.
 ```
-
-## Future
-* Test this template in more environments.
-* Add functionality to automatically generate documentation.

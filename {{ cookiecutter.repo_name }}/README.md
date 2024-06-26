@@ -101,7 +101,3 @@
 The goal is to maintain modularity and separation of concerns:
 - **Shared Code**: All reusable code should reside in the `src/{{ cookiecutter.package_name }}` directory.
 - **Apps, Pipelines, and Notebooks**: Use the shared code in apps, pipelines, and notebooks, ensuring that your project remains clean and maintainable.
-
-## Acknowledgements
-
-This project template is based on the [Data Science Boilerplate](https://github.com/andrewjkuo/ds-boilerplate), influenced by [Cookiecutter Data Science](https://drivendata.github.io/cookiecutter-data-science/), [Kedro](https://kedro.org/), and [govcookiecutter](https://best-practice-and-impact.github.io/govcookiecutter/#govcookiecutter).

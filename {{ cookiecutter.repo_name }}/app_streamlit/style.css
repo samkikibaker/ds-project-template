@@ -1,0 +1,9 @@
+/* Set regular text font to Lato */
+body, div, p, span, li, a, label, input, button, textarea, select {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Set headers to Grueber */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Grueber', sans-serif;
+}
