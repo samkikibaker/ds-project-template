@@ -18,6 +18,27 @@ The goal of this template is to maintain modularity and separation of concerns:
    cookiecutter gh:HoareLea/ds-project-template
    ```
 
+## Technologies
+This project template comes with several tools designed to improve code quality and development efficiency. Some tools are included by default, while others are optional and can be chosen during the setup process.
+- **[Jupyter](https://jupyter.org/)**: Jupyter Notebooks are a popular tool for data exploration and communication. They allow you to write and run code in an interactive environment, which is particularly useful for data analysis and visualization. Note that Jupyter is intended for exploration and not for production code.
+- **[pytest](https://docs.pytest.org/en/)**: pytest is a testing framework for Python that makes it easy to write simple and scalable test cases. Using pytest helps ensure that your code is working correctly and can catch issues early in the development process.
+- **[Docker](https://www.docker.com/)**: Docker is a platform that allows you to create, deploy, and run applications in containers. Containers are lightweight and portable, making it easy to share and run your project in any environment. Including Docker ensures that your project can be consistently run anywhere, from your local machine to a production server.
+- **Makefile**: A Makefile is included to simplify running common commands. It helps you automate repetitive tasks, such as setting up your environment, running tests, or building your application. Using a Makefile can save time and reduce the potential for errors.
+
+#### Pre-Commit Hooks
+Pre-commit hooks are scripts that run automatically before you make a commit in your version control system (e.g., Git). They help ensure that your code meets certain standards before it is saved to the repository.
+- **[Black](https://black.readthedocs.io/en/stable/)**: Black is an opinionated code formatter. It automatically formats your Python code to make it more readable and consistent. By using Black, you can avoid debates about coding style and focus on what the code actually does.
+- **[Flake8](https://flake8.pycqa.org/en/latest/)**: Flake8 is a tool for checking the style and quality of Python code. It combines several tools to check for coding errors, enforce coding style, and maintain code quality. Using Flake8 helps catch common mistakes early in the development process.
+- **[nbstripout](https://github.com/kynan/nbstripout)**: Nbstripout is a tool to strip output from Jupyter notebooks. This is useful for keeping your version control history clean by removing potentially large and unnecessary output data from the notebooks, making them easier to review and manage.
+
+#### Optional Tools
+During the setup process, you can choose to include the following optional tools. If selected, relevant boilerplate code and configuration will be added to your project.
+- **[Streamlit](https://streamlit.io/)**: Streamlit is a framework for creating web applications from Python scripts. It is especially useful for creating interactive data applications and dashboards with minimal effort. Including Streamlit allows you to build and share interactive data apps quickly.
+- **[FastAPI](https://fastapi.tiangolo.com/)**: FastAPI is a modern, fast (high-performance) web framework for building APIs with Python. It is designed for creating RESTful APIs easily and efficiently. If you need to expose your models or data processing as APIs, FastAPI is a great choice.
+- **[Prefect](https://www.prefect.io/)**: Prefect is a workflow management tool for building, scheduling, and monitoring data pipelines. It helps you automate and manage data workflows, ensuring that tasks run in the correct order and handle failures gracefully. Prefect is useful for managing complex data workflows and ensuring reliable data processing.
+- **Cloud Storage Connections**: You can choose to create connections to one of the three main cloud providers (AWS, Azure, or GCP). If selected, helper functions will be created in the `utils` section of the local package. Just update the `.env` file with the relevant secrets to enable these connections.
+- **Database Connections**: You can choose to connect to PostgreSQL or MySQL databases. If selected, helper functions will be created in the `utils` section of the local package. Update the `.env` file with the relevant database connection details to use these functions.
+
 ## Project Structure
 The directory structure of your new project looks like this:
 ```
