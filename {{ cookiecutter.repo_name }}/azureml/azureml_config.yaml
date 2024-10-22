@@ -1,0 +1,12 @@
+data_assets:
+  - name: "{{ cookiecutter.package_name }}-raw"
+    versions:
+      - version: "1" 
+        path: "01_raw"
+        description: "Raw data for the {{ cookiecutter.project_name }} project."
+environments:
+  - name: "{{ cookiecutter.package_name }}_environment"
+    versions:
+      - version: "1"
+        description: "Custom environment for working with the {{ cookiecutter.project_name }} project."
+        image_name: "{{ cookiecutter.package_name }}_pipeline:1"

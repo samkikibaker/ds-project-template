@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from dotenv import load_dotenv
 from PIL import Image
 from {{ cookiecutter.package_name }}.utils.util import yaml2dict, set_hl_styles
 
@@ -8,6 +9,7 @@ import warnings
 warnings.filterwarnings("ignore")
 st.set_page_config(layout="wide")
 
+load_dotenv(override=True)
 conf = yaml2dict("conf/parameters.yaml")
 colors = conf["hl_colors"]
 

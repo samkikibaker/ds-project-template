@@ -28,21 +28,6 @@ fastapi-run:
 	docker run -p 8000:8000 {{cookiecutter.repo_name}}_api
 
 {% endif -%}
-{% if cookiecutter.use_prefect in ['yes', 'y', 'YES', 'Y'] -%}
-
-.PHONY: start-prefect-server
-start-prefect-server:
-	prefect server start
-
-.PHONY: stop-prefect-server
-stop-prefect-server:
-	pkill -f "prefect server"
-
-.PHONY: deploy-prefect
-deploy-prefect:
-	python pipelines/flows.py
-
-{% endif -%}
 
 .PHONY: test
 test: install
