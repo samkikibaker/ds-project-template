@@ -6,7 +6,23 @@ install:
 	pip install -e .[dev]
 	pre-commit install
 
-{% if cookiecutter.include_streamlit_app in ['yes', 'y', 'YES', 'Y'] -%}
+{% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
+
+.PHONY: data-sync-raw
+data-sync-raw:
+	python -m {{cookiecutter.package_name}}.utils.azure_ml {{cookiecutter.package_name}}-raw $(version) data/01_raw/
+
+.PHONY: aml-env-build
+aml-env-build:
+	docker build -f azureml/Dockerfile -t {{cookiecutter.repo_name}}_env .
+
+.PHONY: aml-env-push
+aml-env-push:
+	docker tag {{cookiecutter.repo_name}}_env ${CONTAINER_REGISTRY}/{{cookiecutter.repo_name}}_env:1
+	docker push ${CONTAINER_REGISTRY}/{{cookiecutter.repo_name}}_env:1
+
+{% endif -%}
+{% if cookiecutter.include_streamlit_app|lower in ['yes', 'y'] -%}
 
 .PHONY: streamlit-build
 streamlit-build:
@@ -17,7 +33,7 @@ streamlit-run:
 	docker run -p 8501:8501 {{cookiecutter.repo_name}}_webapp
 
 {% endif -%}
-{% if cookiecutter.include_fastapi_app in ['yes', 'y', 'YES', 'Y'] -%}
+{% if cookiecutter.include_fastapi_app|lower in ['yes', 'y'] -%}
 
 .PHONY: fastapi-build
 fastapi-build:
