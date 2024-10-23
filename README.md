@@ -1,8 +1,8 @@
 # Hoare Lea Data Science Project Template
 A standardised project structure for doing and sharing data science work that enforces best practices. This template includes useful boilerplate code for Hoare Lea projects including:
+* Templates and boilerplate code for interacting with Azure ML workspaces
 * Hoare Lea fonts, colors, logos and css styles added to streamlit apps by default
 * Utility functions for generating plotly data visualisations in the Hoare Lea style
-* Utility functions for connecting to company data sources (FUTURE)
 
 The goal of this template is to maintain modularity and separation of concerns:
 - **Shared Code**: All reusable code should reside in the `src` directory.
@@ -33,10 +33,9 @@ Pre-commit hooks are scripts that run automatically before you make a commit in 
 
 #### Optional Tools
 During the setup process, you can choose to include the following optional tools. If selected, relevant boilerplate code and configuration will be added to your project.
+- **[Azure ML](https://azure.microsoft.com/en-us/products/machine-learning)**: Azure Machine Learning is the preferred service for performing data science work at Hoare Lea. It can be used to provision compute and storage resources and has features for supporting the full ML lifecycle.
 - **[Streamlit](https://streamlit.io/)**: Streamlit is a framework for creating web applications from Python scripts. It is especially useful for creating interactive data applications and dashboards with minimal effort. Including Streamlit allows you to build and share interactive data apps quickly.
 - **[FastAPI](https://fastapi.tiangolo.com/)**: FastAPI is a modern, fast (high-performance) web framework for building APIs with Python. It is designed for creating RESTful APIs easily and efficiently. If you need to expose your models or data processing as APIs, FastAPI is a great choice.
-- **[Prefect](https://www.prefect.io/)**: Prefect is a workflow management tool for building, scheduling, and monitoring data pipelines. It helps you automate and manage data workflows, ensuring that tasks run in the correct order and handle failures gracefully. Prefect is useful for managing complex data workflows and ensuring reliable data processing.
-- **Cloud Storage Connections**: You can choose to create connections to one of the three main cloud providers (AWS, Azure, or GCP). If selected, helper functions will be created in the `utils` section of the local package. Just update the `.env` file with the relevant secrets to enable these connections.
 - **Database Connections**: You can choose to connect to PostgreSQL or MySQL databases. If selected, helper functions will be created in the `utils` section of the local package. Update the `.env` file with the relevant database connection details to use these functions.
 
 ## Project Structure
@@ -46,6 +45,8 @@ The directory structure of your new project looks like this:
 ├── Makefile               <- Makefile with useful commands for project setup and running analysis.
 ├── README.md              <- The top-level README for developers using this project.
 ├── app                    <- App-specific code, requirements file and Dockerfile.
+├── assets                 <- Assets for use in web-apps.
+├── azureml                <- Scripts for creating Azure ML assets and running jobs.
 ├── conf                   <- Configuration files that can be stored in source control.
 ├── data
 │   ├── 01_raw             <- The original, immutable data dump.
