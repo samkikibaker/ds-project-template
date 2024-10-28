@@ -12,14 +12,9 @@ authors = [
 dependencies = [
   "PyYAML",
   "python-dotenv",
-  {% if cookiecutter.cloud_provider == 'aws' -%}
-  "boto3",
-  "botocore",
-  {% elif cookiecutter.cloud_provider == 'gcp' -%}
-  "google-cloud-storage",
-  "google-auth",
-  {% elif cookiecutter.cloud_provider == 'azure' -%}
-  "azure-storage-blob",
+  {% if cookiecutter.azure_ml_project|lower in ['y', 'yes'] -%}
+  "azure-ai-ml",
+  "azure-identity",
   {% endif -%}
   {% if cookiecutter.database_type == 'postgres' -%}
   "psycopg2-binary",
@@ -36,9 +31,6 @@ dev = [
   "flake8",
   "pyproject-flake8",
   "pre-commit",
-  {% if cookiecutter.use_prefect in ['yes', 'y', 'YES', 'Y'] -%}
-  "prefect",
-  {% endif -%}
   "pytest",
 ]
 

@@ -1,12 +1,11 @@
 import yaml
-{% if cookiecutter.include_streamlit_app in ['yes', 'y', 'YES', 'Y'] -%}
+{% if cookiecutter.include_streamlit_app.lower() in ['yes', 'y'] -%}
 import numpy as np
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.io as pio
 from typing import Iterable
-{% endif -%}
-
+{% endif %}
 
 def yaml2dict(fpath: str) -> dict:
     """Opens yaml file at fpath and returns content as dict"""
@@ -14,7 +13,7 @@ def yaml2dict(fpath: str) -> dict:
     return content
 
 
-{% if cookiecutter.include_streamlit_app in ['yes', 'y', 'YES', 'Y'] -%}
+{% if cookiecutter.include_streamlit_app.lower() in ['yes', 'y'] -%}
 hl_colors = [
     "#343334",
     "#d02e6f",

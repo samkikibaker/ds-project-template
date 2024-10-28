@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+from dotenv import load_dotenv
 from PIL import Image
 from {{ cookiecutter.package_name }}.utils.util import yaml2dict, set_hl_styles
 
@@ -8,6 +9,7 @@ import warnings
 warnings.filterwarnings("ignore")
 st.set_page_config(layout="wide")
 
+load_dotenv(override=True)
 conf = yaml2dict("conf/parameters.yaml")
 colors = conf["hl_colors"]
 
@@ -18,11 +20,13 @@ elif os.path.exists(os.path.join(os.getcwd(), "style.css")):
 else:
     print("Failed to load Hoare Lea styles.")
 
+
 def main():
     logo = Image.open("assets/Hoare-Lea-logo-scaled.jpg")
     st.image(logo, width=600)
     st.title("{{cookiecutter.project_name}}")
     st.divider()
+
 
 if __name__ == "__main__":
     main()
