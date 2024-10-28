@@ -30,8 +30,8 @@ env_vars = {
 # Define the command job
 job = command(
     code="azureml/",
-    command="python process_raw_dummy.py --input_path ${{inputs.input_path}} "
-    "--output_path ${{outputs.output_path}}",
+    command="python process_raw_dummy.py --input_path ${{ "{{" }}inputs.input_path{{ "}}" }} "
+    "--output_path ${{ "{{" }}outputs.output_path{{ "}}" }}",
     inputs={
         "input_path": Input(
             type=AssetTypes.URI_FOLDER,
