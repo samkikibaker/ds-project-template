@@ -5,8 +5,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import plotly.io as pio
 from typing import Iterable
-{% endif -%}
-
+{% endif %}
 
 def yaml2dict(fpath: str) -> dict:
     """Opens yaml file at fpath and returns content as dict"""

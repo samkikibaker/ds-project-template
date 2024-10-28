@@ -20,11 +20,13 @@ elif os.path.exists(os.path.join(os.getcwd(), "style.css")):
 else:
     print("Failed to load Hoare Lea styles.")
 
+
 def main():
     logo = Image.open("assets/Hoare-Lea-logo-scaled.jpg")
     st.image(logo, width=600)
     st.title("{{cookiecutter.project_name}}")
     st.divider()
+
 
 if __name__ == "__main__":
     main()
