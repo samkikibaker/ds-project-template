@@ -9,4 +9,4 @@ environments:
     versions:
       - version: "1"
         description: "Custom environment for working with the {{ cookiecutter.project_name }} project."
-        image_name: "{{ cookiecutter.package_name }}_pipeline:1"
+        image: "{{ cookiecutter.package_name }}_pipeline:1"
