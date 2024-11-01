@@ -46,7 +46,7 @@ job = command(
             mode=InputOutputModes.UPLOAD,
         ),
     },
-    environment=f"{env_name}@{env_version}",
+    environment=f"{env_name}:{env_version}",
     environment_variables=env_vars,
     compute=os.getenv("COMPUTE_RESOURCE"),
     display_name="dummy-processing",
