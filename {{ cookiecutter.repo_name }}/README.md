@@ -18,6 +18,7 @@
 ├── models                 <- Trained and serialized models or model summaries.
 ├── notebooks              <- Jupyter notebooks.
 ├── pyproject.toml         <- Project metadata and dependencies.
+├── .python-version        <- Specifies the version of Python to use
 ├── references             <- Data dictionaries, manuals, and all other explanatory materials.
 ├── src                    <- Source code for use in this project.
 │   └── {{ cookiecutter.package_name }}
@@ -34,23 +35,15 @@
 
 ### Setup
 
-1. **Create and Activate Virtual Environment**:
+1. **Create virtual environment and install dependencies using uv**:
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate
-   ```
-
-2. **Install Dependencies and Initialize Git**:
-   ```bash
-   git init
-   pip install -U pip setuptools wheel
-   pip install -e .[dev]
+   pip install uv
+   uv sync
    pre-commit install
    ```
 
    Alternatively, you can use the `make` command:
    ```bash
-   git init
    make install
    ```
 
@@ -79,8 +72,7 @@ Much of the codebase is reliant on environment variables. Set any relevant varia
 
 #### Code Quality
 
-- **Black**: Black is installed as a pre-commit hook and will automatically format any python code. This enables faster code review and small diffs.
-- **Flake8**: Flake8 is used for linting and installed as a pre-commit hook.
+-- **Ruff**: Ruff provides fast linting and auto-fixing for Python code, combining functionality of tools like Flake8 and Black for streamlined code quality.
 - **pytest**: The pytest framework makes it easy to write small, readable tests, and can scale to support complex functional testing for applications and libraries.
 
 #### Notebooks

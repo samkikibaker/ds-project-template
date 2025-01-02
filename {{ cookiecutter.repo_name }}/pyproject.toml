@@ -9,6 +9,7 @@ description = "{{ cookiecutter.description }}"
 authors = [
   { name = "{{ cookiecutter.author_name }}" }
 ]
+requires-python = ">={{ cookiecutter.minimum_python_version }}"
 dependencies = [
   "PyYAML",
   "python-dotenv",
@@ -21,34 +22,17 @@ dependencies = [
   {% elif cookiecutter.database_type == 'mysql' -%}
   "mysql-connector-python",
   {% endif -%}
-
 ]
 
 [project.optional-dependencies]
 dev = [
-  "black",
+  "ruff",
   "coverage",
-  "flake8",
-  "pyproject-flake8",
   "pre-commit",
   "pytest",
 ]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.black]
-line-length = 88
-
-[tool.flake8]
-ignore = ["D203", "W503"]
-max-complexity = 9
-max-line-length = 88
-extend-ignore = ["E203"]
-exclude = [
-    "__pycache__",
-    "venv",
-    ".venv"
-]
 
 [tool.nbstripout]

@@ -2,8 +2,8 @@
 
 .PHONY: install
 install:
-	pip install -U pip setuptools wheel
-	pip install -e .[dev]
+	pip install uv
+	uv sync
 	pre-commit install
 
 {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
@@ -54,13 +54,9 @@ test: install
 test_html: test
 	python -m http.server --directory htmlcov/
 
-.PHONY: lint
-lint:
-	pflake8 .
-
-.PHONY: format
-format:
-	black .
+.PHONY: ruff-fix
+ruff-fix:
+	ruff check --fix
 
 .PHONY: clean
 clean:
