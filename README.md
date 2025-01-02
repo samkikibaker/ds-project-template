@@ -27,8 +27,7 @@ This project template comes with several tools designed to improve code quality 
 
 #### Pre-Commit Hooks
 Pre-commit hooks are scripts that run automatically before you make a commit in your version control system (e.g., Git). They help ensure that your code meets certain standards before it is saved to the repository.
-- **[Black](https://black.readthedocs.io/en/stable/)**: Black is an opinionated code formatter. It automatically formats your Python code to make it more readable and consistent. By using Black, you can avoid debates about coding style and focus on what the code actually does.
-- **[Flake8](https://flake8.pycqa.org/en/latest/)**: Flake8 is a tool for checking the style and quality of Python code. It combines several tools to check for coding errors, enforce coding style, and maintain code quality. Using Flake8 helps catch common mistakes early in the development process.
+- **[ruff](https://github.com/astral-sh/ruff-pre-commit)**: Ruff provides fast code formatting and auto-fixing, combining functionality of tools like Flake8 and Black for streamlined code quality. It helps to avoid debates about coding style so you can focus on what the code actually does
 - **[nbstripout](https://github.com/kynan/nbstripout)**: Nbstripout is a tool to strip output from Jupyter notebooks. This is useful for keeping your version control history clean by removing potentially large and unnecessary output data from the notebooks, making them easier to review and manage.
 
 #### Optional Tools
