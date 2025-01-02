@@ -9,6 +9,7 @@ description = "{{ cookiecutter.description }}"
 authors = [
   { name = "{{ cookiecutter.author_name }}" }
 ]
+requires-python = ">="{{ cookiecutter.minimum_python_version }}""
 dependencies = [
   "PyYAML",
   "python-dotenv",
@@ -27,7 +28,6 @@ dependencies = [
 dev = [
   "ruff",
   "coverage",
-  "pyproject-flake8",
   "pre-commit",
   "pytest",
 ]
