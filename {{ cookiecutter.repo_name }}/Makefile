@@ -58,6 +58,7 @@ test_html: test
 .PHONY: ruff-fix
 ruff-fix:
 	ruff check --fix
+	ruff format
 
 .PHONY: clean
 clean:
