@@ -2,6 +2,7 @@
 
 .PHONY: install
 install:
+	git init
 	pip install uv
 	uv sync
 	pre-commit install

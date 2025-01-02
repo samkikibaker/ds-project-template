@@ -37,6 +37,7 @@
 
 1. **Create virtual environment and install dependencies using uv**:
    ```bash
+   git init
    pip install uv
    uv sync
    pre-commit install
