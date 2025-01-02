@@ -54,13 +54,9 @@ test: install
 test_html: test
 	python -m http.server --directory htmlcov/
 
-.PHONY: lint
-lint:
-	pflake8 .
-
-.PHONY: format
-format:
-	black .
+.PHONY: ruff-fix
+ruff-fix:
+	ruff check --fix
 
 .PHONY: clean
 clean:
