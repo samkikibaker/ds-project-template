@@ -2,9 +2,10 @@
 
 .PHONY: install
 install:
-	git init
 	pip install uv
+	pip install -U pip setuptools wheel
 	uv sync
+	uv pip install -e .
 	pre-commit install
 
 {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
