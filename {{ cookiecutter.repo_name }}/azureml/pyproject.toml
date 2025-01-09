@@ -1,5 +1,5 @@
 [project]
-name = "{{ cookiecutter.project_name }} - azureml"
+name = "{{ cookiecutter.project_name }}-azureml"
 version = "0.1.0"
 description = "An azureml package for {{ cookiecutter.project_name }}" 
 authors = "{{ cookiecutter.author_name }}"
@@ -11,4 +11,4 @@ dependencies = [
 ]
 
 [tool.uv]
-name = "{{ cookiecutter.project_name }} - azureml"
+name = "{{ cookiecutter.project_name }}-azureml"

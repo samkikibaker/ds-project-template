@@ -1,9 +1,9 @@
 [project]
-name = "{{ cookiecutter.project_name }} - app_streamlit"
+name = "{{ cookiecutter.project_name }}-app_streamlit"
 version = "0.1.0"
 description = "A Streamlit app for {{ cookiecutter.project_name }}"
 authors = "{{ cookiecutter.author_name }}"
 dependencies = ["numpy", "plotly", "plotly-express", "streamlit==1.35.0"]
 
 [tool.uv]
-name = "{{ cookiecutter.project_name }} - app_streamlit"
+name = "{{ cookiecutter.project_name }}-app_streamlit"
