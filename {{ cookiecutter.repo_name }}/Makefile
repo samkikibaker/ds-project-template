@@ -2,10 +2,16 @@
 
 .PHONY: install
 install:
-	git init
-	pip install uv
-	uv sync
-	pre-commit install
+	# Initialize git repository
+	git init 
+	# Install uv
+	pip install uv 
+	# Install dependencies, create venv
+	uv sync 
+	# Install pre-commit hooks
+	pre-commit install 
+	# Install package in editable mode
+	uv pip install -e .
 
 {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
 
