@@ -13,10 +13,8 @@ requires-python = ">={{ cookiecutter.minimum_python_version }}"
 dependencies = [
   "PyYAML",
   "python-dotenv",
-  {% if cookiecutter.azure_ml_project|lower in ['y', 'yes'] -%}
-  "azure-ai-ml",
-  "azure-identity",
-  {% endif -%}
+  "ruff",
+  "pre-commit",
   {% if cookiecutter.database_type == 'postgres' -%}
   "psycopg2-binary",
   {% elif cookiecutter.database_type == 'mysql' -%}
@@ -26,9 +24,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "ruff",
   "coverage",
-  "pre-commit",
   "pytest",
 ]
 
@@ -36,3 +32,10 @@ dev = [
 where = ["src"]
 
 [tool.nbstripout]
+
+[tool.uv.workspace]
+members = [
+  "{{ cookiecutter.repo_name }}/app_fastapi",
+  "{{ cookiecutter.repo_name }}/app_streamlit",
+  "{{ cookiecutter.repo_name }}/azureml"
+]
