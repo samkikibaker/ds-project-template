@@ -37,14 +37,6 @@
 
 1. **Create virtual environment and install dependencies using uv**:
    ```bash
-   git init
-   pip install uv
-   uv sync
-   pre-commit install
-   ```
-
-   Alternatively, you can use the `make` command:
-   ```bash
    make install
    ```
 
