@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "An azureml package for {{ cookiecutter.project_name }}" 
 authors = "{{ cookiecutter.author_name }}"
 dependencies = [
-    {% if cookiecutter.azure_ml_project|lower in ['y', 'yes'] -%}
+  {% if cookiecutter.azure_ml_project|lower in ['y', 'yes'] -%}
   "azure-ai-ml",
   "azure-identity",
   {% endif -%}
