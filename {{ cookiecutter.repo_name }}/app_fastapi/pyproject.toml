@@ -3,11 +3,7 @@ name = "{{ cookiecutter.project_name }} - fastapi-app"
 version = "0.1.0"
 description = "A FastAPI app for {{ cookiecutter.project_name }}"
 authors = "{{ cookiecutter.author_name }}"
-dependencies = [
-    "fastapi",
-    "uvicorn",
-    "pydantic",
-]
+dependencies = ["fastapi", "uvicorn", "pydantic"]
 
 [tool.uv]
 name = "{{ cookiecutter.project_name }} - fastapi-app"
