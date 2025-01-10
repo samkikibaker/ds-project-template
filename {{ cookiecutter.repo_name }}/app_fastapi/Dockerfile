@@ -17,5 +17,8 @@ RUN uv sync
 # Expose the port
 EXPOSE 8000
 
+# Place executable in the env
+ENV PATH="/app/.venv/bin:$PATH"
+
 # Run the FastAPI app
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

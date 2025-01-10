@@ -11,4 +11,7 @@ COPY azureml/pyproject.toml pyproject.toml
 
 RUN uv synv
 
+# Place executable in the env
+ENV PATH="/app/.venv/bin:$PATH"
+
 CMD ["bash"]

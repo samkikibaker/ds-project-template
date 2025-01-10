@@ -20,5 +20,8 @@ RUN uv sync
 # Expose the port
 EXPOSE 8501
 
+# Place executable in the env
+ENV PATH="/app/.venv/bin:$PATH"
+
 # Run the streamlit app
-CMD ["streamlit", "run", "app.py"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
