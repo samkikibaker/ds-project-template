@@ -1,4 +1,4 @@
-FROM python:3.9-slim-buster
+FROM python:3.9-slim
 
 # Install the uv package
 RUN pip install uv
@@ -9,6 +9,14 @@ WORKDIR /app
 # Copy required files to the container
 COPY .streamlit .streamlit
 COPY src src
+COPY pyproject.toml pyproject.toml
+
+# How do we get local package and depdencies in this package
+RUN uv pip install .
+
+# Remove pyproject.toml to avoid conflic with the one in the app
+RUN rm pyproject.toml
+
 COPY assets assets
 COPY app_streamlit/pyproject.toml pyproject.toml
 COPY app_streamlit/app.py app.py

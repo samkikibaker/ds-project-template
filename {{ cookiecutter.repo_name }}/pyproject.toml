@@ -1,20 +1,20 @@
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "{{ cookiecutter.package_name }}"
 version = "0.0.1"
 description = "{{ cookiecutter.description }}"
-authors = [
-  { name = "{{ cookiecutter.author_name }}" }
-]
+authors = [{ name = "{{ cookiecutter.author_name }}" }]
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 dependencies = [
+  # Packages
+  "app_fastapi",
+  "app_streamlit",
+  "azureml",
+
+  # Global dependencies
   "PyYAML",
   "python-dotenv",
-  "ruff",
-  "pre-commit",
+
+  # Conditional dependencies
   {% if cookiecutter.database_type == 'postgres' -%}
   "psycopg2-binary",
   {% elif cookiecutter.database_type == 'mysql' -%}
@@ -22,20 +22,33 @@ dependencies = [
   {% endif -%}
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
   "coverage",
   "pytest",
+  "ruff",
+  "pre-commit",
 ]
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [tool.nbstripout]
 
+[tool.uv.sources]   
+# Search for these dependencies as workspaces rather than in PyPI    
+app_fastapi = { workspace = true }
+app_streamlit = { workspace = true }
+azureml = { workspace = true }
+
 [tool.uv.workspace]
 members = [
-  "{{ cookiecutter.repo_name }}/app_fastapi",
-  "{{ cookiecutter.repo_name }}/app_streamlit",
-  "{{ cookiecutter.repo_name }}/azureml"
+  # Define packages as member of the workspace
+  "{{ cookiecutter.repo_name }}/packages/app_fastapi",
+  "{{ cookiecutter.repo_name }}/packages/app_streamlit",
+  "{{ cookiecutter.repo_name }}/packages/azureml"
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["{{ cookiecutter.repo_name }}/src/{{ cookiecutter.package_name }}"]
