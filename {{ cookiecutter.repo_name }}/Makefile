@@ -75,10 +75,14 @@ clean:
 docker-clean:
 	docker system prune
 
-.PHONY kill-streamlit
+.PHONY: docker-restart
+docker-restart:
+	sudo systemctl restart docker
+
+.PHONY: kill-streamlit
 kill-streamlit:
 	kill -9 $(lsof -t -i:8501)
 
-.PHONY kill-fastapi
+.PHONY: kill-fastapi
 kill-fastapi:
 	kill -9 $(lsof -t -i:8000)
