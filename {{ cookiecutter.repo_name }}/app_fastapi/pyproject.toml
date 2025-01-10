@@ -3,7 +3,7 @@ name = "{{ cookiecutter.project_name }}-app_fastapi"
 version = "0.1.0"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 description = "A FastAPI app for {{ cookiecutter.project_name }}"
-authors = "{{ cookiecutter.author_name }}"
+authors = [{ name = "{{ cookiecutter.author_name }}" }]
 dependencies = [
     "src",
     "fastapi", 

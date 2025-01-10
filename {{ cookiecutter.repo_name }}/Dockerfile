@@ -11,7 +11,7 @@ COPY . .
 RUN pip install uv
 
 # Build the entire workspace (installs everything into one environment)
-RUN uv build
+RUN uv build --all-packages
     
 # ---------------------
 # FastAPI Final
