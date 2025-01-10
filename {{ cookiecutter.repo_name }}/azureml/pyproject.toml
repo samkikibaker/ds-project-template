@@ -1,5 +1,5 @@
 [project]
-name = "{{ cookiecutter.project_name }}-azureml"
+name = "azureml"
 version = "0.1.0"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 description = "An azureml package for {{ cookiecutter.project_name }}" 
@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [tool.uv]
-name = "{{ cookiecutter.project_name }}-azureml"
+name = "azureml"
 
 [tool.uv.sources]
 src = { workspace = true }

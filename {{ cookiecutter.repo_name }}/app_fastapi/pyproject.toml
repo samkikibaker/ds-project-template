@@ -1,5 +1,5 @@
 [project]
-name = "{{ cookiecutter.project_name }}-app_fastapi"
+name = "app_fastapi"
 version = "0.1.0"
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 description = "A FastAPI app for {{ cookiecutter.project_name }}"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [tool.uv]
-name = "{{ cookiecutter.project_name }}-app_fastapi"
+name = "app_fastapi"
 
 [tool.uv.sources]
 src = { workspace = true }
