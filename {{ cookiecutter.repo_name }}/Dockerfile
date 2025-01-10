@@ -39,5 +39,5 @@ CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
 # Streamlit Final
 # ---------------------
 FROM base as streamlit
-CMD ["streamlit", "run", "app_streamlit/app.py", "--server.port=8501"]
+CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
     
