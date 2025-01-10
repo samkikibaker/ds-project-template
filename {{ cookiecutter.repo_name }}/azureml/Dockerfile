@@ -9,7 +9,7 @@ WORKDIR /app
 COPY src src
 COPY azureml/pyproject.toml pyproject.toml
 
-RUN uv synv
+RUN uv sync
 
 # Place executable in the env
 ENV PATH="/app/.venv/bin:$PATH"
