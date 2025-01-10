@@ -12,7 +12,6 @@ dependencies = [
 
   # Global dependencies
   "PyYAML",
-  "python-dotenv",
 
   # Conditional dependencies
   {% if cookiecutter.database_type == 'postgres' -%}
@@ -41,9 +40,9 @@ azureml = { workspace = true }
 [tool.uv.workspace]
 members = [
   # Define packages as member of the workspace
-  "{{ cookiecutter.repo_name }}/packages/app_fastapi",
-  "{{ cookiecutter.repo_name }}/packages/app_streamlit",
-  "{{ cookiecutter.repo_name }}/packages/azureml"
+  "{{ cookiecutter.repo_name }}/app_fastapi",
+  "{{ cookiecutter.repo_name }}/app_streamlit",
+  "{{ cookiecutter.repo_name }}/azureml"
 ]
 
 [build-system]

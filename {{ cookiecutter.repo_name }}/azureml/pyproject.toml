@@ -5,11 +5,17 @@ requires-python = ">={{ cookiecutter.minimum_python_version }}"
 description = "An azureml package for {{ cookiecutter.project_name }}" 
 authors = "{{ cookiecutter.author_name }}"
 dependencies = [
-  {% if cookiecutter.azure_ml_project|lower in ['y', 'yes'] -%}
+  "src",
   "azure-ai-ml",
   "azure-identity",
-  {% endif -%}
 ]
 
 [tool.uv]
 name = "{{ cookiecutter.project_name }}-azureml"
+
+[tool.uv.sources]
+src = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
