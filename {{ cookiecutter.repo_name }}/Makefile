@@ -74,3 +74,11 @@ clean:
 .PHONY: docker-clean
 docker-clean:
 	docker system prune
+
+.PHONY kill-streamlit
+kill-streamlit:
+	kill -9 $(lsof -t -i:8501)
+
+.PHONY kill-fastapi
+kill-fastapi:
+	kill -9 $(lsof -t -i:8000)
