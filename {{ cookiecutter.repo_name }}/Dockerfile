@@ -3,15 +3,31 @@
 # ---------------------
 FROM python:3.9-slim as base
 
-# 1) Copy everything:
+# The uv installer requires curl (and certificates) to download the release archive
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download the latest uv installer
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+
+# Run the uv installer then remove it
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Ensure the installed binary is on the `PATH`
+ENV PATH="/root/.local/bin/:$PATH"
+
+# Copy everything:
 WORKDIR /app
 COPY . .
 
-# Install uv if needed
-RUN pip install uv
-
-# Build the entire workspace (installs everything into one environment)
+# Build the entire workspace
 RUN uv build --all-packages
+
+# Create a venv and install dependencies
+RUN uv sync
+
+# Place executables in the environment at the front of the path
+ENV PATH="/app/.venv/bin:$PATH"
     
 # ---------------------
 # FastAPI Final

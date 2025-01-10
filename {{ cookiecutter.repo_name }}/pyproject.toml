@@ -35,7 +35,11 @@ app_streamlit = { workspace = true }
 azureml = { workspace = true }
 
 [tool.uv.workspace]
-members = ["packages/*"]
+members = [
+  "packages/app_fastapi",
+  "packages/app_streamlit",
+  "packages/azureml",
+]
 
 [build-system]
 requires = ["hatchling"]
