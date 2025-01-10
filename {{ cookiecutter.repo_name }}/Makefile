@@ -12,6 +12,8 @@ install:
 	pre-commit install 
 	# Install package in editable mode
 	uv pip install -e .
+	# Add .env file
+	export $(grep -v '^#' .env | xargs)	
 
 {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
 

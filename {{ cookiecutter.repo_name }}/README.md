@@ -37,7 +37,7 @@
 
 1. **Create virtual environment and install dependencies using uv**:
    ```bash
-   # Initialize git repository
+	# Initialize git repository
 	git init 
 	# Install uv
 	pip install uv 
@@ -47,6 +47,8 @@
 	pre-commit install 
 	# Install package in editable mode
 	uv pip install -e .
+	# Add .env file
+	export $(grep -v '^#' .env | xargs)
    ```
 
    Alternatively, you can use the `make` command:
