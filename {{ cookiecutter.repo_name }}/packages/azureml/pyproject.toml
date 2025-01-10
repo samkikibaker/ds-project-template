@@ -5,7 +5,6 @@ requires-python = ">={{ cookiecutter.minimum_python_version }}"
 description = "An azureml package for {{ cookiecutter.project_name }}" 
 authors = [{ name = "{{ cookiecutter.author_name }}" }]
 dependencies = [
-  "src",
   "azure-ai-ml",
   "azure-identity",
 ]
