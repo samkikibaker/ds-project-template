@@ -40,4 +40,10 @@ CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
 # ---------------------
 FROM base as streamlit
 CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
+
+# ---------------------
+# AzureML Final
+# ---------------------
+FROM base as azureml
+CMD ["bash"]
     

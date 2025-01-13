@@ -6,12 +6,12 @@ install:
 	git init 
 	# Install uv
 	pip install uv 
+	# Build the project
+	uv build
 	# Install dependencies, create venv
 	uv sync 
 	# Install pre-commit hooks
 	pre-commit install 
-	# Install package in editable mode
-	uv pip install -e .
 	# Add .env file
 	export $(grep -v '^#' .env | xargs)	
 
@@ -23,7 +23,11 @@ data-sync-raw:
 
 .PHONY: aml-env-build
 aml-env-build:
-	docker build -f azureml/Dockerfile -t {{cookiecutter.repo_name}}_env .
+	docker build \
+	-f Dockerfile \
+	--target azureml \
+	-t {{cookiecutter.repo_name}}_env 
+	.
 
 .PHONY: aml-env-push
 aml-env-push:
@@ -35,7 +39,11 @@ aml-env-push:
 
 .PHONY: streamlit-build
 streamlit-build:
-	docker build -f app_streamlit/Dockerfile -t {{cookiecutter.repo_name}}_webapp .
+	docker build \
+		-f Dockerfile \
+		--target streamlit \
+		-t {{cookiecutter.repo_name}}_webapp
+		.
 
 .PHONY: streamlit-run
 streamlit-run:
@@ -46,7 +54,11 @@ streamlit-run:
 
 .PHONY: fastapi-build
 fastapi-build:
-	docker build -f app_fastapi/Dockerfile -t {{cookiecutter.repo_name}}_api .
+	docker build \
+		-f Dockerfile \
+		--target fastapi \
+		-t {{cookiecutter.repo_name}}_api
+		.
 
 .PHONY: fastapi-run
 fastapi-run:
