@@ -6,7 +6,7 @@ from {{ cookiecutter.package_name}}.utils.util import yaml2dict
 from {{ cookiecutter.package_name }}.utils.azure_ml import get_ml_client
 
 load_dotenv(override=True)
-azureml_config = yaml2dict("azureml/azureml_config.yaml")
+azureml_config = yaml2dict("packages/azureml/src/azureml/azureml_config.yaml")
 
 ml_client = get_ml_client()
 

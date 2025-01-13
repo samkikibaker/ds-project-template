@@ -26,7 +26,7 @@ aml-env-build:
 	docker build \
 	-f Dockerfile \
 	--target azureml \
-	-t {{cookiecutter.repo_name}}_env 
+	-t {{cookiecutter.repo_name}}_env \
 	.
 
 .PHONY: aml-env-push
@@ -42,7 +42,7 @@ streamlit-build:
 	docker build \
 		-f Dockerfile \
 		--target streamlit \
-		-t {{cookiecutter.repo_name}}_webapp
+		-t {{cookiecutter.repo_name}}_webapp \
 		.
 
 .PHONY: streamlit-run
@@ -57,7 +57,7 @@ fastapi-build:
 	docker build \
 		-f Dockerfile \
 		--target fastapi \
-		-t {{cookiecutter.repo_name}}_api
+		-t {{cookiecutter.repo_name}}_api \
 		.
 
 .PHONY: fastapi-run
