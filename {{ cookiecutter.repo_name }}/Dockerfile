@@ -21,29 +21,38 @@ WORKDIR /app
 COPY . .
 
 # Build the entire workspace
-RUN uv build --all-packages
+RUN uv build {{cookiecutter.package_name}}
 
 # Create a venv and install dependencies
 RUN uv sync
 
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
-    
+
+{% if cookiecutter.include_fastapi_app.lower() in ['yes', 'y'] -%}
 # ---------------------
 # FastAPI Final
 # ---------------------
-FROM base as fastapi
-CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
-        
+    FROM base as fastapi
+    RUN uv build app_fastapi
+    CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
+{% endif -%}
+
+{% if cookiecutter.include_streamlit_app.lower() in ['yes', 'y'] -%}
 # ---------------------
 # Streamlit Final
 # ---------------------
-FROM base as streamlit
-CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
+    FROM base as streamlit
+    RUN uv build app_streamlit
+    CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
+{% endif -%}
 
+{% if cookiecutter.azure_ml_project.lower() in ['yes', 'y'] -%}
 # ---------------------
 # AzureML Final
 # ---------------------
-FROM base as azureml
-CMD ["bash"]
+    FROM base as azureml
+    RUN uv build azureml
+    CMD ["bash"]
+{% endif -%}    
     

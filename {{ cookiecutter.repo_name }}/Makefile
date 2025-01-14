@@ -14,6 +14,8 @@ install:
 	pre-commit install 
 	# Add .env file
 	export $(grep -v '^#' .env | xargs)	
+	# Install local package in editable mode
+	uv pip install -e .
 
 {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
 
@@ -49,6 +51,10 @@ streamlit-build:
 streamlit-run:
 	docker run -p 8501:8501 {{cookiecutter.repo_name}}_webapp
 
+.PHONY: kill-streamlit
+kill-streamlit:
+	kill -9 $(lsof -t -i:8501)
+
 {% endif -%}
 {% if cookiecutter.include_fastapi_app|lower in ['yes', 'y'] -%}
 
@@ -63,6 +69,10 @@ fastapi-build:
 .PHONY: fastapi-run
 fastapi-run:
 	docker run -p 8000:8000 {{cookiecutter.repo_name}}_api
+
+.PHONY: kill-fastapi
+kill-fastapi:
+	kill -9 $(lsof -t -i:8000)
 
 {% endif -%}
 
@@ -92,11 +102,3 @@ docker-clean:
 .PHONY: docker-restart
 docker-restart:
 	sudo systemctl restart docker
-
-.PHONY: kill-streamlit
-kill-streamlit:
-	kill -9 $(lsof -t -i:8501)
-
-.PHONY: kill-fastapi
-kill-fastapi:
-	kill -9 $(lsof -t -i:8000)
