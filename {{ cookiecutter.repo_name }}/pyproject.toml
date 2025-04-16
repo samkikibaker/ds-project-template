@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "{{ cookiecutter.package_name }}"
 version = "0.0.1"
@@ -28,10 +32,7 @@ dev = [
   "pytest",
 ]
 
-[tool.setuptools]
-packages = ["cascade_api"]  
-package-dir = {"" = "src"}
+[tool.setuptools.packages.find]
+where = ["src"]
 
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+[tool.nbstripout]
