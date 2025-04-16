@@ -7,13 +7,8 @@ install:
 	# Install uv globally
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 
-	{% if cookiecutter.install_developer_requirements|lower in ['yes', 'y'] -%}
 	# Create a virtual environment and install dependencies (dev installed by default)
 	uv sync
-	{% else %}
-	# Create a virtual environment and install dependencies (no dev)
-	uv sync --no-group dev
-	{% endif -%}
 
 	# Install pre-commit hooks
 	source .venv/bin/activate && pre-commit install
@@ -77,8 +72,6 @@ kill-fastapi:
 
 {% endif -%}
 
-
-{%- if cookiecutter.install_developer_requirements|lower in ['yes', 'y'] %}
 .PHONY: test
 test: install
 	coverage run -m pytest
@@ -88,4 +81,4 @@ test: install
 ruff:
 	# Run ruff
 	uv run ruff format
-{% endif -%}
+	
