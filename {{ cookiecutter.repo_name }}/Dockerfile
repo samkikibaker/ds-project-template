@@ -26,22 +26,30 @@ RUN uv sync
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
 
+{% if cookiecutter.include_fastapi_app|lower in ['yes', 'y'] -%}
 # ---------------------
 # FastAPI Final
 # ---------------------
+# Create fast-api runtime
 FROM base AS fastapi
 CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
+{% endif -%}
 
+{% if cookiecutter.include_streamlit_app|lower in ['yes', 'y'] -%}
 # ---------------------
 # Streamlit Final
 # ---------------------
+# Create streamlit runtime
 FROM base AS streamlit
 CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
+{% endif -%}
 
+{% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
 # ---------------------
 # AzureML Final
 # ---------------------
+# Create AzureML runtime
 FROM base AS azureml
 CMD ["bash"]
-  
+{% endif -%}
     
