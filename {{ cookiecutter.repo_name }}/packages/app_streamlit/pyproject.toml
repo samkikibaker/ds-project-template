@@ -10,13 +10,3 @@ dependencies = [
     "plotly-express", 
     "streamlit==1.35.0"
 ]
-
-[tool.uv.sources]
-src = { workspace = true }
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/app_streamlit"]

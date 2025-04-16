@@ -5,10 +5,6 @@ description = "{{ cookiecutter.description }}"
 authors = [{ name = "{{ cookiecutter.author_name }}" }]
 requires-python = ">={{ cookiecutter.minimum_python_version }}"
 dependencies = [
-  # Packages
-  "app_fastapi",
-  "app_streamlit",
-  "azureml",
 
   # Global dependencies
   "PyYAML",
@@ -19,6 +15,18 @@ dependencies = [
   {% elif cookiecutter.database_type == 'mysql' -%}
   "mysql-connector-python",
   {% endif -%}
+
+  # Local packages
+  {% if cookiecutter.include_fastapi_app|lower in ['yes', 'y'] -%}
+  app_fastapi
+  {% endif -%}
+  {% if cookiecutter.include_streamlit_app|lower in ['yes', 'y'] -%}
+  app_streamlit
+  {% endif -%}
+  {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
+  app_streamlit
+  {% endif -%}
+
 ]
 
 [dependency-groups]
@@ -29,10 +37,16 @@ dev = [
   "pre-commit",
 ]
 
-[tool.setuptools]
-packages = ["cascade_api"]  
-package-dir = {"" = "src"}
+[tool.uv.sources]
+{% if cookiecutter.include_fastapi_app|lower in ['yes', 'y'] -%}
+app_fastapi = { workspace = true}
+{% endif -%}
+{% if cookiecutter.include_streamlit_app|lower in ['yes', 'y'] -%}
+app_streamlit = { workspace = true}
+{% endif -%}
+{% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
+azureml = { workspace = true}
+{% endif -%}
 
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+[tool.uv.workspace]
+members = ["packages/*"]
