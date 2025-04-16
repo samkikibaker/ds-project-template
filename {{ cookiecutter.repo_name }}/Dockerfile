@@ -1,7 +1,7 @@
 # ---------------------
 # Base Stage
 # ---------------------
-FROM python:3.9-slim as base
+FROM python:3.9-slim AS base
 
 # The uv installer requires curl (and certificates) to download the release archive
 RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates \
@@ -20,39 +20,28 @@ ENV PATH="/root/.local/bin/:$PATH"
 WORKDIR /app
 COPY . .
 
-# Build the entire workspace
-RUN uv build {{cookiecutter.package_name}}
-
 # Create a venv and install dependencies
 RUN uv sync
 
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
 
-{% if cookiecutter.include_fastapi_app.lower() in ['yes', 'y'] -%}
 # ---------------------
 # FastAPI Final
 # ---------------------
-    FROM base as fastapi
-    RUN uv build app_fastapi
-    CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
-{% endif -%}
+FROM base AS fastapi
+CMD ["uvicorn", "app_fastapi.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
-{% if cookiecutter.include_streamlit_app.lower() in ['yes', 'y'] -%}
 # ---------------------
 # Streamlit Final
 # ---------------------
-    FROM base as streamlit
-    RUN uv build app_streamlit
-    CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
-{% endif -%}
+FROM base AS streamlit
+CMD ["streamlit", "run", "packages/app_streamlit/src/app_streamlit/app.py", "--server.port=8501"]
 
-{% if cookiecutter.azure_ml_project.lower() in ['yes', 'y'] -%}
 # ---------------------
 # AzureML Final
 # ---------------------
-    FROM base as azureml
-    RUN uv build azureml
-    CMD ["bash"]
-{% endif -%}    
+FROM base AS azureml
+CMD ["bash"]
+  
     
