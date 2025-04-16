@@ -29,18 +29,10 @@ dev = [
   "pre-commit",
 ]
 
-[tool.uv.sources]
-app_fastapi = { workspace = true }
-app_streamlit = { workspace = true }
-azureml = { workspace = true }
-
-[tool.uv.workspace]
-members = [
-  "packages/app_fastapi",
-  "packages/app_streamlit",
-  "packages/azureml",
-]
+[tool.setuptools]
+packages = ["cascade_api"]  
+package-dir = {"" = "src"}
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
