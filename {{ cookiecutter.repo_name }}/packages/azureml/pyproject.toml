@@ -8,3 +8,7 @@ dependencies = [
   "azure-ai-ml",
   "azure-identity",
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
