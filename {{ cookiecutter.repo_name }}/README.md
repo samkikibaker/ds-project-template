@@ -35,25 +35,14 @@
 
 ### Setup
 
-1. **Build project, create venv and install dependencies using uv**:
-   ```bash
-   # Initialize git repository
-   git init 
-   # Install uv
-   pip install uv 
-   # Build the project
-   uv build
-   # Install dependencies, create venv
-   uv sync 
-   # Install pre-commit hooks
-   pre-commit install 
-   # Add .env file
-   export $(grep -v '^#' .env | xargs)
-   ```
-
-   Alternatively, you can use the `make` command:
+1. **Build project, create virtual environment (venv) and install dependencies using uv**:
    ```bash
    make install
+   ```
+
+2. **Activate venv
+   ```bash
+   source .venv/bin/activate
    ```
 
 3. **Make Initial Commit**:

@@ -3,20 +3,17 @@
 SHELL := /bin/bash
 
 .PHONY: install
-setup:
+install:
 	# Install uv globally
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 
-	# Create a virtual environment
-	uv venv
-
-	{%- if cookiecutter.install_developer_requirements|lower in ['yes', 'y'] %}
-	# Install project and developer dependencies
-	uv pip install -e .[dev]
-	{%- else %}
-	# Install only project dependencies
-	uv pip install -e .
-	{%- endif %}
+	{% if cookiecutter.install_developer_requirements|lower in ['yes', 'y'] -%}
+	# Create a virtual environment and install dependencies (dev installed by default)
+	uv sync
+	{% else %}
+	# Create a virtual environment and install dependencies (no dev)
+	uv sync --no-group dev
+	{% endif -%}
 
 	# Install pre-commit hooks
 	source .venv/bin/activate && pre-commit install
