@@ -8,5 +8,5 @@
     "azure_ml_project": "yes",
     "database_type": ["none", "postgres", "mysql"],
     "description": "A short description of the project.",
-    "author_name": ""
+    "author_name": "Author Name"
 }

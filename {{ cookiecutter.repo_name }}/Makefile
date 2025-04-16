@@ -2,8 +2,11 @@
 
 SHELL := /bin/bash
 
-.PHONY: install
-install:
+.PHONY: setup
+setup:
+	# Initialise git
+	git init
+	
 	# Install uv globally
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 
