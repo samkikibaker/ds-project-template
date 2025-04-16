@@ -1,7 +1,7 @@
 # ---------------------
 # Base Stage
 # ---------------------
-FROM python:3.9-slim AS base
+FROM python:{{ cookiecutter.minimum_python_version }}-slim AS base
 
 # The uv installer requires curl (and certificates) to download the release archive
 RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates \
