@@ -10,8 +10,13 @@ setup:
 	# Create a virtual environment
 	uv venv
 
-	# Install project dependencies
+	{%- if cookiecutter.install_developer_requirements|lower in ['yes', 'y'] %}
+	# Install project and developer dependencies
+	uv pip install -e .[dev]
+	{%- else %}
+	# Install only project dependencies
 	uv pip install -e .
+	{%- endif %}
 
 	# Install pre-commit hooks
 	source .venv/bin/activate && pre-commit install
