@@ -18,13 +18,13 @@ dependencies = [
 
   # Local packages
   {% if cookiecutter.include_fastapi_app|lower in ['yes', 'y'] -%}
-  app_fastapi,
+  "app_fastapi",
   {% endif -%}
   {% if cookiecutter.include_streamlit_app|lower in ['yes', 'y'] -%}
-  app_streamlit,
+  "app_streamlit",
   {% endif -%}
   {% if cookiecutter.azure_ml_project|lower in ['yes', 'y'] -%}
-  azureml,
+  "azureml",
   {% endif -%}
 
 ]
