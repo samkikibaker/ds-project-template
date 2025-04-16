@@ -81,7 +81,7 @@ kill-fastapi:
 {% endif -%}
 
 
-{% if cookiecutter.dev_dependencies|lower in ['yes', 'y'] -%}
+{%- if cookiecutter.install_developer_requirements|lower in ['yes', 'y'] %}
 .PHONY: test
 test: install
 	coverage run -m pytest
